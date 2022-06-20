@@ -1,5 +1,6 @@
 package com.intech.librairie.controller;
 
+import com.intech.librairie.config.ApiResponse;
 import com.intech.librairie.model.Author;
 import com.intech.librairie.services.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +17,16 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/author")
 public class AuthorController {
+
     @Autowired
     private AuthorService authorService;
 
     @PostMapping("/createAuthor")
-    public ResponseEntity<com.intech.ecommerce.config.ApiResponse> createAuthor(@Valid @RequestBody Author author) {
+    public ResponseEntity<ApiResponse> createAuthor(@Valid @RequestBody Author author) {
         if (Objects.nonNull(authorService.readAuthor(author.getFirstName()))) {
-            return new ResponseEntity<>(new com.intech.ecommerce.config.ApiResponse(false, "author already exists"), HttpStatus.CONFLICT);
+            return new ResponseEntity<>(new ApiResponse(false, "author already exists"), HttpStatus.CONFLICT);
         }
         authorService.createAuthor(author);
-        return new ResponseEntity<>(new com.intech.ecommerce.config.ApiResponse(true, "created the author"), HttpStatus.CREATED);
+        return new ResponseEntity<>(new ApiResponse(true, "created the author"), HttpStatus.CREATED);
     }
 }

@@ -1,4 +1,4 @@
-package com.intech.ecommerce.config;
+package com.intech.librairie.config;
 
 import java.time.LocalDateTime;
 
