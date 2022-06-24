@@ -23,9 +23,6 @@ public class AuthorController {
 
     @PostMapping("/createAuthor")
     public ResponseEntity<ApiResponse> createAuthor(@Valid @RequestBody Author author) {
-        if (Objects.nonNull(authorService.readAuthor(author.getFirstName()))) {
-            return new ResponseEntity<>(new ApiResponse(false, "author already exists"), HttpStatus.CONFLICT);
-        }
         authorService.createAuthor(author);
         return new ResponseEntity<>(new ApiResponse(true, "created the author"), HttpStatus.CREATED);
     }

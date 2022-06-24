@@ -11,8 +11,12 @@ public class AuthorService {
     @Autowired
     private AuthorRepository authorRepository;
 
-    public Author readAuthor(String authorName) {
-        return authorRepository.findByFirstName(authorName);
+    public boolean existAuthorById(int id) {
+        return authorRepository.existsAuthorById(id);
+    }
+
+    public Author findAuthorById(int id) {
+        return authorRepository.findById(id);
     }
 
     public void createAuthor(Author author) {
