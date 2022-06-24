@@ -23,8 +23,8 @@ public class Author {
     @Column(name = "author_date_of_birth")
     private String dateOfBirth;
 
-    public Author(String name, String lastName, String dateOfBirth) {
-        this.firstName = name;
+    public Author(String firstName, String lastName, String dateOfBirth) {
+        this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
     }

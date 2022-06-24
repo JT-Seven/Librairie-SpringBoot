@@ -12,7 +12,7 @@ public class AuthorService {
     private AuthorRepository authorRepository;
 
     public Author readAuthor(String authorName) {
-        return authorRepository.findByAuthorName(authorName);
+        return authorRepository.findByFirstName(authorName);
     }
 
     public void createAuthor(Author author) {
